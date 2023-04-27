@@ -21,7 +21,7 @@ export default function AddUser() {
       name: name,
       surname: surname,
       username: username,
-      post: post
+      post: post,
     };
     if (newUser.name.trim() && newUser.surname.trim() !== "") {
       setUsers([...users, newUser]);
@@ -33,11 +33,11 @@ export default function AddUser() {
   const postAnything = () => {
     let user = users.map((item) => {
       if (item.username === userName) {
+        item.post = post;
+        setPost(post);
         return item;
       }
     });
-    setPost(post)
-    console.log(user,"item");
   };
 
   return (
@@ -77,6 +77,18 @@ export default function AddUser() {
         onChangeText={setPost}
       />
       <Button title="Post anyting" onPress={postAnything} />
+      {users.map((user, index) =>
+      //   user.post !== "" ? (
+          <View key={index} style={{ marginVertical: 5 }}>
+            <Text style={{ fontSize: 18 }}>{`Username: ${user.username}`}</Text>
+            <Text
+              style={{ fontSize: 16, color: "gray" }}
+            >{`Post: ${user.post}`}</Text>
+          </View>
+      //   ) : (
+      //     ""
+      //   )
+      )}
     </View>
   );
 }
