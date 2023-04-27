@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import AddUser from "./components/AddUser";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <Text style={styles.welcoming}>Welcome to Bla bla</Text>
+        </View>
+        <AddUser />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin: 30,
+  },
+  welcoming: {
+    fontSize: 25,
+    marginVertical: 15,
   },
 });
